@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Palette Generator — Design Mockup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+            display: ['"Outfit"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :focus-visible {
+      outline: 2px solid #a78bfa;
+      outline-offset: 2px;
+    }
+    .swatch-lg {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .swatch-lg:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    }
+    .favorite-row:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+  </style>
+</head>
+<body class="h-full min-h-screen bg-[#0c0d12] text-slate-100 font-sans antialiased">
+  <div class="flex min-h-screen flex-col lg:flex-row">
+    <!-- Main content -->
+    <main class="flex flex-1 flex-col px-5 py-8 sm:px-8 lg:px-12 lg:py-10">
+      <header class="mb-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-4">
+          <div
+            class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-amber-400 shadow-lg shadow-violet-900/40"
+            aria-hidden="true"
+          >
+            <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+            </svg>
+          </div>
+          <div>
+            <h1 class="font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              Color Palette Generator
+            </h1>
+            <p class="mt-1 text-sm text-slate-400">
+              Five harmonious colors — click any swatch to copy HEX
+            </p>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="inline-flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-900/50 transition hover:bg-violet-500 hover:shadow-violet-800/60 active:scale-[0.98]"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          Generate palette
+        </button>
+      </header>
+
+      <!-- Large swatches -->
+      <section aria-label="Current palette" class="mb-8">
+        <p class="mb-4 text-xs font-medium uppercase tracking-wider text-slate-500">Current palette</p>
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-5">
+          <button type="button" class="swatch-lg group flex flex-col overflow-hidden rounded-2xl border border-white/10 text-left focus-visible:ring-2 focus-visible:ring-violet-400">
+            <div class="aspect-[4/3] min-h-[120px] w-full sm:min-h-[140px] lg:min-h-[160px]" style="background-color: #3A7BD5;"></div>
+            <span class="bg-[#14161f] px-4 py-3 font-mono text-sm font-medium text-slate-200 group-hover:text-white">#3A7BD5</span>
+          </button>
+          <button type="button" class="swatch-lg group flex flex-col overflow-hidden rounded-2xl border border-white/10 text-left focus-visible:ring-2 focus-visible:ring-violet-400">
+            <div class="aspect-[4/3] min-h-[120px] w-full sm:min-h-[140px] lg:min-h-[160px]" style="background-color: #00D2FF;"></div>
+            <span class="bg-[#14161f] px-4 py-3 font-mono text-sm font-medium text-slate-200 group-hover:text-white">#00D2FF</span>
+          </button>
+          <button type="button" class="swatch-lg group flex flex-col overflow-hidden rounded-2xl border border-white/10 text-left focus-visible:ring-2 focus-visible:ring-violet-400">
+            <div class="aspect-[4/3] min-h-[120px] w-full sm:min-h-[140px] lg:min-h-[160px]" style="background-color: #6C5CE7;"></div>
+            <span class="bg-[#14161f] px-4 py-3 font-mono text-sm font-medium text-slate-200 group-hover:text-white">#6C5CE7</span>
+          </button>
+          <button type="button" class="swatch-lg group flex flex-col overflow-hidden rounded-2xl border border-white/10 text-left focus-visible:ring-2 focus-visible:ring-violet-400">
+            <div class="aspect-[4/3] min-h-[120px] w-full sm:min-h-[140px] lg:min-h-[160px]" style="background-color: #FDCB6E;"></div>
+            <span class="bg-[#14161f] px-4 py-3 font-mono text-sm font-medium text-slate-800 group-hover:text-slate-900">#FDCB6E</span>
+          </button>
+          <button type="button" class="swatch-lg group col-span-2 flex flex-col overflow-hidden rounded-2xl border border-white/10 text-left focus-visible:ring-2 focus-visible:ring-violet-400 sm:col-span-1">
+            <div class="aspect-[4/3] min-h-[120px] w-full sm:min-h-[140px] lg:min-h-[160px]" style="background-color: #E17055;"></div>
+            <span class="bg-[#14161f] px-4 py-3 font-mono text-sm font-medium text-slate-200 group-hover:text-white">#E17055</span>
+          </button>
+        </div>
+        <p class="mt-4 flex items-center gap-2 text-sm text-slate-500">
+          <svg class="h-4 w-4 shrink-0 text-violet-400/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+          Click a swatch to copy its HEX value to your clipboard
+        </p>
+        <div
+          class="mt-4 inline-flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-300"
+          role="status"
+          aria-live="polite"
+        >
+          <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          Copied <span class="font-mono text-emerald-100">#3A7BD5</span> to clipboard
+        </div>
+      </section>
+
+      <div class="mt-auto pt-6">
+        <button
+          type="button"
+          class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold text-slate-100 transition hover:border-violet-500/40 hover:bg-violet-500/10 sm:w-auto"
+        >
+          <svg class="h-5 w-5 text-rose-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+          Save to favorites
+        </button>
+      </div>
+    </main>
+
+    <!-- Sidebar: Recent favorites -->
+    <aside
+      class="w-full border-t border-white/10 bg-[#11131a] lg:w-[340px] lg:shrink-0 lg:border-l lg:border-t-0 xl:w-[380px]"
+      aria-label="Recent favorites"
+    >
+      <div class="sticky top-0 border-b border-white/10 bg-[#11131a]/95 px-5 py-5 backdrop-blur-sm">
+        <h2 class="font-display text-lg font-semibold text-white">Recent favorites</h2>
+        <p class="mt-1 text-xs text-slate-500">Click a row to restore · Remove with ×</p>
+      </div>
+
+      <div class="space-y-2 p-4">
+        <!-- Favorite row 1 -->
+        <div
+          role="button"
+          tabindex="0"
+          class="favorite-row group relative flex cursor-pointer items-center gap-3 rounded-xl border border-white/8 bg-[#0c0d12]/60 p-3 pr-10 transition focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#11131a]"
+        >
+          <div class="flex flex-1 gap-1.5" aria-hidden="true">
+            <span class="h-9 w-9 shrink-0 rounded-lg border border-black/20 shadow-inner" style="background:#2D3436"></span>
+            <span class="h-9 w-9 shrink-0 rounded-lg border border-black/20 shadow-inner" style="background:#636E72"></span>
+            <span class="h-9 w-9 shrink-0 rounded-lg border border-black/20 shadow-inner" style="background:#B2BEC3"></span>
+            <span class="h-9 w-9 shrink-0 rounded-lg border border-black/20 shadow-inner" style="background:#DFE6E9"></span>
+            <span class="h-9 w-9 shrink-0 rounded-lg border border-black/20 shadow-inner" style="background:#0984E3"></span>
+          </div>
+          <div class="hidden min-w-0 sm:block">
+            <p class="truncate text-xs font-medium text-slate-400">Today, 2:14 PM</p>
+          </div>
+          <button type="button" class="absolute right-2 top-1/2 flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center rounded-lg p-2 text-slate-500 opacity-100 transition hover:bg-white/10 hover:text-rose-400 focus-visible:opacity-100 sm:opacity-0 sm:group-hover:opacity-100" title="Remove" aria-label="Remove favorite">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <span class="sr-only">Restore palette from Today, 2:14 PM</span>
+        </div>
+
+        <!-- Favorite row 2 -->
+        <div
+          role="button"
+          tabindex="0"
+          class="favorite-row group relative flex cursor-pointer items-center gap-3 rounded-xl border border-white/8 bg-[#0c0d12]/60 p-3 pr-10 transition focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#11131a]"
+        >
+          <div class="flex flex-1 gap-1.5" aria-hidden="true">
+            <span class="h-9 w-9 shrink-0 rounded-lg border border-black/20 shadow-inner" style="background:#FF6B6B"></span>
+            <span class="h-9 w-9 shrink-0 rounded-lg border border-black/20 shadow-inner" style="background:#4ECDC4"></span>
+            <span class="h-9 w-9 shrink-0 rounded-lg border border-black/20 shadow-inner" style="background:#FFE66D"></span>
+            <span class="h-9 w-9 shrink-0 rounded-lg border border-black/20 shadow-inner" style="background:#1A535C"></span>
+            <span class="h-9 w-9 shrink-0 rounded-lg border border-black/20 shadow-inner" style="background:#F7FFF7"></span>
+          </div>
+          <div class="hidden min-w-0 sm:block">
+            <p class="truncate text-xs font-medium text-slate-400">Yesterday, 9:41 AM</p>
+          </div>
+          <button
+            type="button"
+            class="absolute right-2 top-1/2 flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center rounded-lg p-2 text-slate-500 opacity-100 transition hover:bg-white/10 hover:text-rose-400 focus-visible:opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
+            title="Remove"
+            aria-label="Remove favorite"
+          >
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <span class="sr-only">Restore palette from Yesterday, 9:41 AM</span>
+        </div>
+      </div>
+
+      <!--
+        Empty state (shown when favorites list has no items in the real app).
+        Static preview block for design review — normally hidden when rows exist.
+      -->
+      <section
+        class="mx-4 mb-6 mt-2 hidden rounded-xl border border-dashed border-white/12 bg-[#0c0d12]/40 p-8 text-center"
+        aria-label="Empty favorites preview"
+      >
+        <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-white/5 text-slate-500">
+          <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </div>
+        <h3 class="font-display text-sm font-semibold text-slate-300">No favorites yet</h3>
+        <p class="mx-auto mt-2 max-w-[220px] text-xs leading-relaxed text-slate-500">
+          Generate a palette you love, then tap <span class="text-slate-400">Save to favorites</span> to see it here.
+        </p>
+      </section>
+    </aside>
+  </div>
+</body>
+</html>
